@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Castle Noir - Luxury Hotel</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+  <body class="antialiased">
+  <!-- Navigation -->
+  <div class="fixed top-0 w-full bg-opacity-90 bg-marble z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="C:/Users/user/OneDrive/Desktop/Castle Noir/photos/logo.jpeg" alt="Logo" class="h-10 w-auto mr-3 invert gold-text">
+        <h1 class="text-2xl gold-text font-bold">Castle Noir</h1>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="javascript:void(0)" class="nav-button text-white hover:gold-text" onclick="scrollToSection('virtual-tour')">Virtual Tour</a>
+        <a href="javascript:void(0)" class="nav-button text-white hover:gold-text" onclick="scrollToSection('booking')">Book a Room</a>
+        <a href="javascript:void(0)" class="nav-button text-white hover:gold-text" onclick="scrollToSection('promotions')">Promotions</a>
+        <a href="javascript:void(0)" class="nav-button text-white hover:gold-text" onclick="scrollToSection('location')">Location</a>
+      </div>
+      
+      <button class="md:hidden text-white focus:outline-none" id="menu-button">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation -->
+  <div class="fixed top-16 right-0 w-4/5 max-w-xs bg-marble bg-opacity-95 z-50 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out navigation-menu" id="mobile-menu">
+    <div class="py-4 px-6 flex flex-col space-y-4">
+      <a href="javascript:void(0)" class="nav-button text-white hover:gold-text py-2 px-4 border-b border-gray-700" onclick="scrollToSection('virtual-tour')">Virtual Tour</a>
+      <a href="javascript:void(0)" class="nav-button text-white hover:gold-text py-2 px-4 border-b border-gray-700" onclick="scrollToSection('booking')">Book a Room</a>
+      <a href="javascript:void(0)" class="nav-button text-white hover:gold-text py-2 px-4 border-b border-gray-700" onclick="scrollToSection('promotions')">Promotions</a>
+      <a href="javascript:void(0)" class="nav-button text-white hover:gold-text py-2 px-4">Location</a>
+    </div>
+  </div>
+  <script>
+  // Toggle mobile menu
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('translate-x-full')) {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+    } else {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+    }
+  });
+
+  // Smooth scroll to section
+  function scrollToSection(sectionId) {
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+
+ <!-- Hero Section -->
+<section 
+  id="hero" 
+  class="hero-section py-20 text-center relative bg-gradient-to-b from-black via-gray-900 to-black text-white"
+  style="background-image: url('luxurious-dark-texture.jpg'); background-size: cover; background-position: center;"
+>
+  <div class="hero-content max-w-5xl mx-auto px-6">
+    
+    <!-- Floating Welcome Card -->
+    <div class="welcome-card mb-12">
+      <img src="hotel-logo.png" alt="Castle Noir Logo" class="logo" />
+      <h2 class="tagline">Where Elegance Meets Comfort</h2>
+      <div class="gold-divider"></div>
+      <div class="scroll-arrow">↓</div>
+    </div>
+
+    <!-- Hero Title -->
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gold">
+      Castle Noir
+    </h1>
+    <p class="text-xl md:text-2xl mb-8 text-gray-200">
+      Where Gothic Elegance Meets Modern Luxury
+    </p>
+
+    <!-- Hero Buttons -->
+    <div class="flex flex-wrap justify-center gap-4">
+      <button
+        type="button"
+        id="exploreBtn"
+        class="gold-button px-8 py-3 rounded-sm text-lg font-semibold hover:shadow-lg transition duration-300"
+        onclick="scrollToSection('virtual-tour')"
+        aria-controls="virtual-tour"
+        aria-label="Explore the virtual tour"
+      >
+        Explore
+      </button>
+
+      <button
+        type="button"
+        id="bookBtn"
+        class="px-8 py-3 rounded-sm text-lg font-semibold border-2 gold-border text-white hover:bg-gold hover:text-black transition duration-300"
+        onclick="scrollToSection('booking')"
+        aria-controls="booking"
+        aria-label="Book your stay now"
+      >
+        Book Now
+      </button>
+
+      <button
+        type="button"
+        id="chatToggleBtn"
+        class="px-8 py-3 rounded-sm text-lg font-semibold border-2 gold-border text-white hover:bg-gold hover:text-black transition duration-300"
+        onclick="toggleChat()"
+        aria-expanded="false"
+        aria-controls="chat-panel"
+        aria-label="Open chat panel"
+      >
+        Chat
+      </button>
+    </div>
+
+    <!-- Cinematic Photo Pop-Ups -->
+    <div class="photo-gallery mt-16 flex justify-center gap-6">
+      <div class="photo-card">
+        <img src="C:\Users\user\OneDrive\Desktop\Castle Noir\photos\luxury suite.jpeg" alt="Luxury Room" />
+      </div>
+      <div class="photo-card">
+        <img src="C:\Users\user\OneDrive\Desktop\Castle Noir\photos\lobby.jpg" alt="Grand Lobby" />
+      </div>
+      <div class="photo-card">
+        <img src="C:\Users\user\OneDrive\Desktop\Castle Noir\photos\spa.jpg" alt="Relaxing Spa" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chat Toggle Button -->
+<button 
+  id="chatToggleBtn" 
+  class="gold-button px-4 py-2 rounded-sm font-semibold"
+  aria-controls="chat-panel" 
+  aria-expanded="false"
+  onclick="toggleChat()"
+>
+  Chat
+</button>
+
+<!-- Chat Panel (hidden by default) -->
+<div id="chat-panel" hidden aria-hidden="true" class="chat-panel">
+  <h3 class="text-xl font-bold mb-2">AI Concierge</h3>
+  <div id="chat-messages" class="chat-messages">
+    <div class="hotel-message">Welcome to Castle Noir. How can I assist you?</div>
+  </div>
+  <div class="chat-input-area">
+    <input 
+      id="chat-input" 
+      type="text" 
+      class="chat-input" 
+      placeholder="Type your message..."
+      onkeydown="handleChatInput(event)"
+    >
+    <div class="quick-replies">
+      <button onclick="quickReply('Book a Room')">Book a Room</button>
+      <button onclick="quickReply('Spa Menu')">Spa Menu</button>
+      <button onclick="quickReply('Dining Options')">Dining Options</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Toggle chat panel visibility
+  function toggleChat() {
+    const panel = document.getElementById('chat-panel');
+    const btn = document.getElementById('chatToggleBtn');
+    if (!panel) return;
+
+    const isHidden = panel.hasAttribute('hidden');
+    if (isHidden) {
+      panel.removeAttribute('hidden');
+      panel.setAttribute('aria-hidden', 'false');
+      btn && btn.setAttribute('aria-expanded', 'true');
+      const focusable = panel.querySelector('input');
+      (focusable || panel).focus({ preventScroll: true });
+    } else {
+      panel.setAttribute('hidden', '');
+      panel.setAttribute('aria-hidden', 'true');
+      btn && btn.setAttribute('aria-expanded', 'false');
+      btn && btn.focus({ preventScroll: true });
+    }
+  }
+
+  // Handle typing + Enter
+  function handleChatInput(event) {
+    if (event.key === "Enter") {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      addMessage(message, "user");
+      input.value = "";
+
+      // Generate bot response
+      const response = generateResponse(message);
+      setTimeout(() => addMessage(response, "hotel"), 600);
+    }
+  }
+
+  // Handle quick reply buttons
+  function quickReply(text) {
+    addMessage(text, "user");
+    const response = generateResponse(text);
+    setTimeout(() => addMessage(response, "hotel"), 600);
+  }
+
+  // Add message to chat window
+  function addMessage(text, sender) {
+    const container = document.getElementById("chat-messages");
+    const msg = document.createElement("div");
+    msg.className = sender === "user" ? "user-message" : "hotel-message";
+    msg.textContent = text;
+    container.appendChild(msg);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  // Simple scripted bot responses
+  function generateResponse(userText) {
+    const lower = userText.toLowerCase();
+    if (lower.includes("book")) {
+      return "I can help you book a room. Which dates are you considering?";
+    }
+    if (lower.includes("spa")) {
+      return "Our spa offers luxury treatments. Would you like me to show you the spa menu?";
+    }
+    if (lower.includes("dining")) {
+      return "The Castle Noir restaurant serves gothic-inspired fine dining. Shall I reserve a table?";
+    }
+    return "Certainly. Could you tell me more about what you’d like?";
+  }
+</script>
+<!-- Virtual Tour Section -->
+<section id="virtual-tour" class="py-24 bg-opacity-90 bg-marble">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gold-text mb-4">Virtual Hotel Tour</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Experience the haunting beauty and modern luxury of Castle Noir. Immerse yourself in our meticulously designed spaces that blend gothic elegance with contemporary comfort.
+      </p>
+    </div>
+    
+    <!-- Carousel -->
+    <div class="carousel-container relative">
+      <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide transition-transform duration-700 ease-in-out" id="tour-carousel">
+        
+        <!-- Gallery Items -->
+        <div class="min-w-full snap-center p-4 carousel-item">
+          <div class="gothic-frame candle-glow shadow-2xl hover:scale-105 transition-transform duration-500">
+            <img src="photos/download.jpeg" alt="Luxurious Lobby"
+              class="w-full h-[500px] object-cover gallery-image">
+          </div>
+          <p class="text-center mt-4 text-lg gold-text">Elegant Lobby</p>
+        </div>
+        
+        <div class="min-w-full snap-center p-4 carousel-item">
+          <div class="gothic-frame candle-glow shadow-2xl hover:scale-105 transition-transform duration-500">
+            <img src="photos/dining hall.jpeg" alt="Gothic Restaurant"
+              class="w-full h-[500px] object-cover gallery-image">
+          </div>
+          <p class="text-center mt-4 text-lg gold-text">The Dining Hall</p>
+        </div>
+        
+        <div class="min-w-full snap-center p-4 carousel-item">
+          <div class="gothic-frame candle-glow shadow-2xl hover:scale-105 transition-transform duration-500">
+            <img src="photos/luxury suite.jpeg" alt="Luxury Suite"
+              class="w-full h-[500px] object-cover gallery-image">
+          </div>
+          <p class="text-center mt-4 text-lg gold-text">Deluxe Suite</p>
+        </div>
+        
+        <div class="min-w-full snap-center p-4 carousel-item">
+          <div class="gothic-frame candle-glow shadow-2xl hover:scale-105 transition-transform duration-500">
+            <img src="photos/marble bathroom.jpeg" alt="Luxurious Bathroom"
+              class="w-full h-[500px] object-cover gallery-image">
+          </div>
+          <p class="text-center mt-4 text-lg gold-text">Marble Bathrooms</p>
+        </div>
+        
+        <div class="min-w-full snap-center p-4 carousel-item">
+          <div class="gothic-frame candle-glow shadow-2xl hover:scale-105 transition-transform duration-500">
+            <img src="photos/grand ballroom.jpeg" alt="Grand Ballroom"
+              class="w-full h-[500px] object-cover gallery-image">
+          </div>
+          <p class="text-center mt-4 text-lg gold-text">Grand Ballroom</p>
+        </div>
+      </div>
+      
+      <!-- Navigation Arrows -->
+      <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition" id="prev-slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition" id="next-slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <!-- Slideshow Controls -->
+    <div class="text-center mt-8">
+      <button class="gold-button px-6 py-2 rounded-sm flex items-center mx-auto" id="slideshow-button">
+        <i class="fas fa-play mr-2"></i> Start Slideshow
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Cinematic Slideshow Modal -->
+<div id="slideshow-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center hidden z-50">
+  <div class="relative max-w-4xl w-full p-6">
+    <button onclick="closeSlideshow()" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+    <div class="gothic-frame candle-glow">
+      <img id="slideshow-image" src="" alt="Slideshow Image" class="w-full h-[600px] object-cover rounded-lg shadow-2xl">
+    </div>
+    <p id="slideshow-caption" class="text-center text-xl gold-text mt-4"></p>
+    <div class="flex justify-between mt-6">
+      <button onclick="prevSlide()" class="gold-button px-4 py-2 rounded-sm">Previous</button>
+      <button onclick="nextSlide()" class="gold-button px-4 py-2 rounded-sm">Next</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slides = [
+    { src: "photos/download.jpeg", caption: "Elegant Lobby with Marble Floors and Gothic Chandeliers" },
+    { src: "photos/dining hall.jpeg", caption: "Dining Hall with Vaulted Ceilings and Ambient Lighting" },
+    { src: "photos/luxury suite.jpeg", caption: "Deluxe Suite with Canopy Bed and Gothic Decor" },
+    { src: "photos/marble bathroom.jpeg", caption: "Marble Bathroom with Gold Accents and Deep Soaking Tub" },
+    { src: "photos/grand ballroom.jpeg", caption: "Grand Ballroom with Crystal Chandeliers and Velvet Drapery" }
+  ];
+  
+  let currentIndex = 0;
+  
+  // Slideshow start
+  document.getElementById("slideshow-button").addEventListener("click", () => {
+    currentIndex = 0;
+    showSlide(currentIndex);
+    document.getElementById("slideshow-modal").classList.remove("hidden");
+    speakCaption(slides[currentIndex].caption);
+  });
+  
+  function showSlide(index) {
+    const slide = slides[index];
+    document.getElementById("slideshow-image").src = slide.src;
+    document.getElementById("slideshow-caption").textContent = slide.caption;
+    speakCaption(slide.caption);
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+  
+  function closeSlideshow() {
+    document.getElementById("slideshow-modal").classList.add("hidden");
+    window.speechSynthesis.cancel(); // stop narration
+  }
+  
+  // Narration using Web Speech API
+  function speakCaption(text) {
+    window.speechSynthesis.cancel(); // stop previous
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 1; // normal speed
+    utterance.pitch = 1; // normal pitch
+    window.speechSynthesis.speak(utterance);
+  }
+</script>
+
+
+ <!-- Booking Section -->
+<section id="booking" class="py-24 bg-velvet">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gold-text mb-4">Book Your Stay</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Indulge in an unforgettable experience at Castle Noir. Our luxurious accommodations blend modern comfort with Transylvanian mystique.
+      </p>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="max-w-3xl mx-auto bg-marble bg-opacity-90 p-8 rounded-sm gothic-frame">
+      <form id="booking-form" class="space-y-6" novalidate>
+        <!-- Stay Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="check-in" class="block text-gray-300 mb-2">Check-in date</label>
+            <input type="date" id="check-in" name="checkin" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+          </div>
+          <div>
+            <label for="check-out" class="block text-gray-300 mb-2">Check-out date</label>
+            <input type="date" id="check-out" name="checkout" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="room-type" class="block text-gray-300 mb-2">Room type</label>
+            <select id="room-type" name="roomtype" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+              <option value="">Select room type</option>
+              <option value="standard">Gothic Standard</option>
+              <option value="deluxe">Dracula Deluxe</option>
+              <option value="suite">Transylvanian Suite</option>
+              <option value="royal">Royal Tower Suite</option>
+            </select>
+          </div>
+          <div>
+            <label for="guests" class="block text-gray-300 mb-2">Number of guests</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="2" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+          </div>
+        </div>
+
+        <!-- Personal Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="fullname" class="block text-gray-300 mb-2">Full name</label>
+            <input type="text" id="fullname" name="fullname" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+          </div>
+          <div>
+            <label for="email" class="block text-gray-300 mb-2">Email address (Gmail or Yahoo)</label>
+            <input type="email" id="email" name="email" required
+              placeholder="name@gmail.com or name@yahoo.com"
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+            <p id="email-error" class="text-red-400 mt-1 hidden">Please use a Gmail or Yahoo email address.</p>
+          </div>
+        </div>
+
+        <!-- Country phone selector -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="country" class="block text-gray-300 mb-2">Country</label>
+            <select id="country" name="country" required
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+              <option value="KE" data-code="+254">Kenya (+254)</option>
+              <option value="US" data-code="+1">United States (+1)</option>
+              <option value="GB" data-code="+44">United Kingdom (+44)</option>
+              <option value="FR" data-code="+33">France (+33)</option>
+              <option value="DE" data-code="+49">Germany (+49)</option>
+              <option value="AE" data-code="+971">United Arab Emirates (+971)</option>
+            </select>
+          </div>
+          <div>
+            <label for="country-code" class="block text-gray-300 mb-2">Country code</label>
+            <input type="text" id="country-code" name="countrycode" readonly
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm">
+          </div>
+          <div>
+            <label for="phone" class="block text-gray-300 mb-2">Phone number</label>
+            <input type="tel" id="phone" name="phone" required
+              placeholder="712345678"
+              pattern="[0-9\s\-]{6,15}"
+              class="w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold">
+            <p id="phone-error" class="text-red-400 mt-1 hidden">Enter a valid phone number (digits, spaces, hyphens).</p>
+          </div>
+        </div>
+
+        <!-- Special requests (preset options + notes) -->
+        <div>
+          <label class="block text-gray-300 mb-2">Special requests</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-300">
+            <label class="inline-flex items-center gap-2">
+              <input type="checkbox" name="requests[]" value="Late check-in" class="accent-gold"> Late check-in
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="checkbox" name="requests[]" value="High floor" class="accent-gold"> High floor
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="checkbox" name="requests[]" value="Quiet room" class="accent-gold"> Quiet room
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="checkbox" name="requests[]" value="Accessible room" class="accent-gold"> Accessible room
+            </label>
+            <label class="inline-flex items-center gap-2 md:col-span-2">
+              <input type="checkbox" id="req-other" class="accent-gold"> Other (specify below)
+            </label>
+          </div>
+          <textarea id="requests-notes" name="requestsNotes" rows="3" placeholder="Add any specific notes"
+            class="mt-3 w-full bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:border-gold hidden"></textarea>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col md:flex-row gap-4 justify-center pt-4">
+          <button type="button" id="check-availability"
+            class="gold-button px-8 py-3 rounded-sm text-lg font-semibold">
+            Check availability
+          </button>
+          <button type="submit" id="submit-booking"
+            class="gold-button px-8 py-3 rounded-sm text-lg font-semibold">
+            Submit booking
+          </button>
+        </div>
+
+        <!-- Inline errors -->
+        <p id="form-error" class="text-red-400 mt-2 hidden">Please complete all required fields correctly.</p>
+      </form>
+    </div>
+
+    <!-- Availability Results with Exploration -->
+    <div id="availability-results" class="max-w-4xl mx-auto mt-12 hidden">
+      <h3 class="text-2xl font-bold gold-text mb-6 text-center">Available accommodations</h3>
+      <div id="rooms-loading" class="loading-spinner hidden"></div>
+      <div id="rooms-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 hidden"></div>
+      <p id="availability-message" class="text-center text-gray-300 mt-4 hidden"></p>
+    </div>
+
+    <!-- Reservation Confirmation -->
+    <div id="reservation-confirmation"
+      class="max-w-3xl mx-auto mt-12 bg-marble bg-opacity-80 p-8 rounded-sm gothic-frame hidden">
+      <div class="text-center">
+        <i class="fas fa-check-circle gold-text text-5xl mb-4"></i>
+        <h3 class="text-2xl font-bold gold-text mb-2">Reservation confirmed</h3>
+        <p class="text-gray-300 mb-6">Thank you for choosing Castle Noir. A confirmation has been sent to your email.</p>
+
+        <div class="text-left bg-gray-900 bg-opacity-60 p-6 rounded-sm mb-6">
+          <h4 class="text-xl gold-text mb-4">Reservation details</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+            <p><span class="font-semibold">Name:</span> <span id="confirm-name"></span></p>
+            <p><span class="font-semibold">Email:</span> <span id="confirm-email"></span></p>
+            <p><span class="font-semibold">Phone:</span> <span id="confirm-phone"></span></p>
+            <p><span class="font-semibold">Check-in:</span> <span id="confirm-checkin"></span></p>
+            <p><span class="font-semibold">Check-out:</span> <span id="confirm-checkout"></span></p>
+            <p><span class="font-semibold">Room type:</span> <span id="confirm-roomtype"></span></p>
+            <p><span class="font-semibold">Guests:</span> <span id="confirm-guests"></span></p>
+            <p><span class="font-semibold">Requests:</span> <span id="confirm-requests"></span></p>
+            <p><span class="font-semibold">Total:</span> <span id="confirm-price" class="gold-text">—</span></p>
+            <p><span class="font-semibold">Reservation #:</span> <span id="confirm-reservationid"></span></p>
+          </div>
+        </div>
+
+        <button id="manage-reservation-btn" class="gold-button px-6 py-2 rounded-sm">
+          View/Manage reservation
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reservation Modal -->
+<div id="reservation-modal"
+  class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden">
+  <div class="bg-gray-900 p-8 rounded-lg max-w-lg w-full relative text-gray-300">
+    <button id="close-modal" class="absolute top-2 right-2 text-white text-2xl" aria-label="Close modal">&times;</button>
+    <h3 class="text-2xl gold-text mb-4">Reservation preview</h3>
+    <div id="reservation-details" class="space-y-2"></div>
+
+    <div class="flex justify-between mt-6">
+      <button type="button" id="save-reservation" class="gold-button px-4 py-2 rounded-sm">Save</button>
+      <button type="button" id="update-reservation" class="gold-button px-4 py-2 rounded-sm">Update</button>
+      <button type="button" id="delete-reservation" class="bg-red-600 px-4 py-2 rounded-sm">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Elements
+  const bookingForm = document.getElementById('booking-form');
+  const checkBtn = document.getElementById('check-availability');
+  const formError = document.getElementById('form-error');
+
+  const availabilitySection = document.getElementById('availability-results');
+  const roomsLoading = document.getElementById('rooms-loading');
+  const roomsContainer = document.getElementById('rooms-container');
+  const availabilityMessage = document.getElementById('availability-message');
+
+  const modal = document.getElementById('reservation-modal');
+  const closeBtn = document.getElementById('close-modal');
+  const detailsDiv = document.getElementById('reservation-details');
+  const confirmation = document.getElementById('reservation-confirmation');
+
+  const countrySelect = document.getElementById('country');
+  const countryCode = document.getElementById('country-code');
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phone-error');
+
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('email-error');
+
+  const reqOther = document.getElementById('req-other');
+  const reqNotes = document.getElementById('requests-notes');
+
+  // Initialize country code
+  function setCountryCodeFromSelect() {
+    const code = countrySelect.options[countrySelect.selectedIndex].dataset.code || '';
+    countryCode.value = code;
+  }
+  setCountryCodeFromSelect();
+  countrySelect.addEventListener('change', setCountryCodeFromSelect);
+
+  // Toggle "Other" requests notes
+  reqOther.addEventListener('change', () => {
+    reqNotes.classList.toggle('hidden', !reqOther.checked);
+    if (!reqOther.checked) reqNotes.value = '';
+  });
+
+  // Email domain validation (gmail.com or yahoo.com)
+  function isAllowedEmailDomain(value) {
+    const match = value.toLowerCase().match(/^[^@]+@([a-z0-9.-]+)$/);
+    const domain = match ? match[1] : '';
+    return domain === 'gmail.com' || domain === 'yahoo.com';
+  }
+  emailInput.addEventListener('input', () => {
+    const ok = isAllowedEmailDomain(emailInput.value);
+    emailError.classList.toggle('hidden', ok || emailInput.value === '');
+  });
+
+  // Phone validation (digits, spaces, hyphens; country code is separate)
+  phoneInput.addEventListener('input', () => {
+    const pattern = /^[0-9\s\-]{6,15}$/;
+    const ok = pattern.test(phoneInput.value);
+    phoneError.classList.toggle('hidden', ok || phoneInput.value === '');
+  });
+
+  // Core field validation for availability
+  function validateCoreFields() {
+    const ids = ['check-in', 'check-out', 'room-type', 'guests'];
+    return ids.every(id => {
+      const el = document.getElementById(id);
+      return el && el.value;
+    });
+  }
+
+  // Reservation ID
+  function generateReservationId() {
+    const ts = Date.now().toString(36);
+    const rand = Math.floor(Math.random() * 1e6).toString().padStart(6, '0');
+    return `CN-${ts}-${rand}`.toUpperCase();
+  }
+
+  // Room data (can be replaced with API data)
+  const roomOptions = [
+    {
+      type: 'standard',
+      name: 'East Wing Chamber',
+      price: 180,
+      img: '/images/rooms/standard.jpg',
+      desc: 'A cozy Gothic chamber with velvet drapes and candlelit ambiance.',
+      amenities: ['Queen bed', 'Fireplace', 'Complimentary breakfast']
+    },
+    {
+      type: 'deluxe',
+      name: 'Velvet Parlor',
+      price: 260,
+      img: '/images/rooms/deluxe.jpg',
+      desc: 'Luxurious parlor with carved oak furniture and balcony views.',
+      amenities: ['King bed', 'Private balcony', 'Evening wine service']
+    },
+    {
+      type: 'suite',
+      name: 'Moonlit Suite',
+      price: 380,
+      img: '/images/rooms/suite.jpg',
+      desc: 'Spacious suite with moonlit skylight and gothic artistry.',
+      amenities: ['King bed', 'Jacuzzi tub', 'Butler service']
+    },
+    {
+      type: 'royal',
+      name: 'Royal Tower Suite',
+      price: 520,
+      img: '/images/rooms/royal.jpg',
+      desc: 'The pinnacle of Castle Noir luxury, perched in the tower.',
+      amenities: ['Four‑poster bed', 'Private terrace', 'Champagne welcome']
+    }
+  ];
+
+  // Render rooms with exploration
+  function renderRooms(selectedType) {
+    roomsContainer.innerHTML = '';
+    roomsContainer.classList.remove('hidden');
+
+    const filtered = selectedType ? roomOptions.filter(r => r.type === selectedType) : roomOptions;
+
+    if (filtered.length === 0) {
+      availabilityMessage.classList.remove('hidden');
+      availabilityMessage.textContent = 'No rooms match your criteria. Try a different room type or dates.';
+      return;
+    } else {
+      availabilityMessage.classList.add('hidden');
+    }
+
+    filtered.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'bg-gray-900 bg-opacity-60 p-6 rounded-sm';
+
+      card.innerHTML = `
+        <h4 class="text-xl gold-text mb-2">${r.name}</h4>
+        <p class="text-gray-300 mb-2">Per night: <span class="gold-text">$${r.price}</span></p>
+        <button class="gold-button px-4 py-2 rounded-sm mb-2" aria-expanded="false">View details</button>
+        <div class="room-details hidden mt-4">
+          <img src="${r.img}" alt="${r.name}" class="w-full h-48 object-cover rounded-sm mb-3">
+          <p class="text-gray-300 mb-2">${r.desc}</p>
+          <ul class="list-disc list-inside text-gray-400 mb-3">
+            ${r.amenities.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+          <button class="gold-button px-4 py-2 rounded-sm select-room" data-room="${r.type}" data-price="${r.price}">
+            Select this room
+          </button>
+        </div>
+      `;
+
+      const toggleBtn = card.querySelector('button[aria-expanded]');
+      const details = card.querySelector('.room-details');
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', !expanded);
+        details.classList.toggle('hidden');
+        toggleBtn.textContent = expanded ? 'View details' : 'Hide details';
+      });
+
+      card.querySelector('.select-room').addEventListener('click', (e) => {
+        document.getElementById('room-type').value = e.target.dataset.room;
+        bookingForm.dataset.price = e.target.dataset.price;
+        availabilityMessage.classList.remove('hidden');
+        availabilityMessage.textContent = `${r.name} selected. You can submit your booking.`;
+      });
+
+      roomsContainer.appendChild(card);
+    });
+  }
+
+  // Fixed availability button
+  checkBtn.addEventListener('click', () => {
+    if (!validateCoreFields()) {
+      formError.classList.remove('hidden');
+      formError.textContent = 'Please select check-in, check-out, room type, and guests.';
+      return;
+    }
+    formError.classList.add('hidden');
+
+    availabilitySection.classList.remove('hidden');
+    roomsLoading.classList.remove('hidden');
+    roomsContainer.classList.add('hidden');
+    availabilityMessage.classList.add('hidden');
+
+    // Simulate async fetch
+    setTimeout(() => {
+      roomsLoading.classList.add('hidden');
+      renderRooms(document.getElementById('room-type').value);
+    }, 600);
+  });
+
+  // Preview modal on submit
+  let currentReservationId = null;
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Validate required fields
+    const ids = ['check-in', 'check-out', 'room-type', 'guests', 'fullname', 'email', 'phone'];
+    const allFilled = ids.every(id => {
+      const el = document.getElementById(id);
+      return el && el.value;
+    });
+
+    const emailOK = isAllowedEmailDomain(emailInput.value);
+    const phoneOK = /^[0-9\s\-]{6,15}$/.test(phoneInput.value);
+
+    if (!allFilled || !emailOK || !phoneOK) {
+      formError.classList.remove('hidden');
+      formError.textContent = 'Please complete all required fields with a valid email and phone.';
+      if (!emailOK) emailError.classList.remove('hidden');
+      if (!phoneOK) phoneError.classList.remove('hidden');
+      return;
+    }
+    formError.classList.add('hidden');
+
+    const fd = new FormData(bookingForm);
+    currentReservationId = generateReservationId();
+
+    // Nights calculation
+    const cin = new Date(fd.get('checkin'));
+    const cout = new Date(fd.get('checkout'));
+    const nights = Math.max(1, Math.round((cout - cin) / (1000 * 60 * 60 * 24)));
+    const basePrice = Number(bookingForm.dataset.price || 0);
+    const total = basePrice ? `$${(basePrice * nights).toFixed(2)}` : '—';
+
+    // Collect special requests
+    const reqs = [];
+    bookingForm.querySelectorAll('input[name="requests[]"]:checked').forEach(cb => reqs.push(cb.value));
+    if (reqOther.checked && reqNotes.value.trim()) reqs.push(reqNotes.value.trim());
+
+    const phoneFull = `${countryCode.value} ${fd.get('phone')}`;
+
+    detailsDiv.innerHTML = `
+      <p><strong>Reservation #:</strong> ${currentReservationId}</p>
+      <p><strong>Name:</strong> ${fd.get('fullname')}</p>
+      <p><strong>Email:</strong> ${fd.get('email')}</p>
+      <p><strong>Phone:</strong> ${phoneFull}</p>
+      <p><strong>Check-in:</strong> ${fd.get('checkin')}</p>
+      <p><strong>Check-out:</strong> ${fd.get('checkout')}</p>
+      <p><strong>Room type:</strong> ${fd.get('roomtype')}</p>
+      <p><strong>Guests:</strong> ${fd.get('guests')}</p>
+      <p><strong>Requests:</strong> ${reqs.length ? reqs.join(', ') : 'None'}</p>
+      <p><strong>Estimated total:</strong> ${total}</p>
+    `;
+
+    modal.classList.remove('hidden');
+  });
+
+  // Modal controls
+  closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+  // Save -> populate confirmation and simulate email send
+  document.getElementById('save-reservation').addEventListener('click', () => {
+    const fd = new FormData(bookingForm);
+
+    document.getElementById('confirm-name').textContent = fd.get('fullname');
+    document.getElementById('confirm-email').textContent = fd.get('email');
+    document.getElementById('confirm-phone').textContent = `${countryCode.value} ${fd.get('phone')}`;
+    document.getElementById('confirm-checkin').textContent = fd.get('checkin');
+    document.getElementById('confirm-checkout').textContent = fd.get('checkout');
+    document.getElementById('confirm-roomtype').textContent = fd.get('roomtype');
+    document.getElementById('confirm-guests').textContent = fd.get('guests');
+
+    const reqs = [];
+    bookingForm.querySelectorAll('input[name="requests[]"]:checked').forEach(cb => reqs.push(cb.value));
+    if (reqOther.checked && reqNotes.value.trim()) reqs.push(reqNotes.value.trim());
+    document.getElementById('confirm-requests').textContent = reqs.length ? reqs.join(', ') : 'None';
+
+    document.getElementById('confirm-reservationid').textContent = currentReservationId;
+
+    const cin = new Date(fd.get('checkin'));
+    const cout = new Date(fd.get('checkout'));
+    const nights = Math.max(1, Math.round((cout - cin) / (1000 * 60 * 60 * 24)));
+    const basePrice = Number(bookingForm.dataset.price || 0);
+    const total = basePrice ? `$${(basePrice * nights).toFixed(2)}` : '—';
+    document.getElementById('confirm-price').textContent = total;
+
+    confirmation.classList.remove('hidden');
+    modal.classList.add('hidden');
+
+    // Simulated email sending
+    console.log(`Confirmation email sent to ${fd.get('email')} for reservation ${currentReservationId}.`);
+  });
+
+  // Update -> close modal and allow edits
+  document.getElementById('update-reservation').addEventListener('click', () => {
+    modal.classList.add('hidden');
+    document.getElementById('fullname').focus();
+  });
+
+  // Delete -> reset flow
+  document.getElementById('delete-reservation').addEventListener('click', () => {
+    bookingForm.reset();
+    bookingForm.dataset.price = '';
+    availabilitySection.classList.add('hidden');
+    confirmation.classList.add('hidden');
+    modal.classList.add('hidden');
+  });
+
+  // Manage reservation -> open modal with current state
+  const manageBtn = document.getElementById('manage-reservation-btn');
+  manageBtn?.addEventListener('click', () => {
+    const fd = new FormData(bookingForm);
+    const cin = new Date(fd.get('checkin'));
+    const cout = new Date(fd.get('checkout'));
+    const nights = Math.max(1, Math.round((cout - cin) / (1000 * 60 * 60 * 24)));
+    const basePrice = Number(bookingForm.dataset.price || 0);
+    const total = basePrice ? `$${(basePrice * nights).toFixed(2)}` : '—';
+
+    const reqs = [];
+    bookingForm.querySelectorAll('input[name="requests[]"]:checked').forEach(cb => reqs.push(cb.value));
+    if (reqOther.checked && reqNotes.value.trim()) reqs.push(reqNotes.value.trim());
+
+    detailsDiv.innerHTML = `
+      <p><strong>Reservation #:</strong> ${currentReservationId || '—'}</p>
+      <p><strong>Name:</strong> ${fd.get('fullname') || '—'}</p>
+      <p><strong>Email:</strong> ${fd.get('email') || '—'}</p>
+      <p><strong>Phone:</strong> ${countryCode.value} ${fd.get('phone') || ''}</p>
+      <p><strong>Check-in:</strong> ${fd.get('checkin') || '—'}</p>
+      <p><strong>Check-out:</strong> ${fd.get('checkout') || '—'}</p>
+      <p><strong>Room type:</strong> ${fd.get('roomtype') || '—'}</p>
+      <p><strong>Guests:</strong> ${fd.get('guests') || '—'}</p>
+      <p><strong>Requests:</strong> ${reqs.length ? reqs.join(', ') : 'None'}</p>
+      <p><strong>Estimated total:</strong> ${total}</p>
+    `;
+    modal.classList.remove('hidden');
+  });
+</script>
+
+  <!-- Spa Menu Section -->
+  <section id="spa" class="bg-velvet p-10 text-center">
+    <h2 class="text-3xl font-bold gold-text mb-4">Spa Menu</h2>
+    <ul class="serif space-y-2">
+      <li>✨ Aromatherapy Massage – 60 min of essential oils and deep relaxation</li>
+      <li>✨ Gothic Rose Facial – 45 min rejuvenating facial with rose essence</li>
+      <li>✨ Velvet Body Wrap – 90 min detoxifying wrap with velvet‑infused clay</li>
+      <li>✨ Crystal Healing Therapy – Balance energy with warm stones and crystals</li>
+      <li>✨ Midnight Bath Ritual – Candlelit soak with herbal infusions</li>
+      <li>✨ Couples Retreat – Private suite with synchronized massages</li>
+    </ul>
+  </section>
+
+  <!-- Dining Options Section -->
+  <section id="dining" class="bg-marble p-10 text-center">
+    <h2 class="text-3xl font-bold gold-text mb-4">Dining Options</h2>
+    <ul class="serif space-y-2">
+      <li>🍷 Noir Fine Dining – Gothic‑inspired cuisine with seasonal tasting menus</li>
+      <li>🍴 Courtyard Café – Light bites, artisan pastries, and specialty coffees</li>
+      <li>🥂 Rooftop Lounge – Signature cocktails with panoramic castle views</li>
+      <li>🍖 Cellar Banquet – Medieval‑style feasts with wine pairings</li>
+      <li>🍵 Tea Room – Afternoon tea with exotic blends and patisserie</li>
+      <li>🍹 Garden Terrace – Fresh juices and farm‑to‑table salads</li>
+    </ul>
+  </section>
+
+  <!-- Guest Services Section -->
+  <section id="services" class="bg-velvet p-10 text-center">
+    <h2 class="text-3xl font-bold gold-text mb-4">Guest Services</h2>
+    <ul class="serif space-y-2">
+      <li>🛎 24/7 Concierge Assistance – Personalized recommendations and bookings</li>
+      <li>🚗 Luxury Transport – Chauffeur service, airport transfers, and private tours</li>
+      <li>🌐 Multi‑language Support – Guides and staff fluent in major languages</li>
+      <li>📅 Event & Tour Reservations – Exclusive access to local attractions</li>
+      <li>💻 Business Center – High‑speed internet, printing, and meeting rooms</li>
+      <li>👶 Family Services – Babysitting, kids’ activities, and family packages</li>
+      <li>🐾 Pet‑Friendly Amenities – Special suites and grooming for pets</li>
+      <li>🎭 Cultural Experiences – Gothic art tours, live music, and themed events</li>
+    </ul>
+  </section>
+
+  <!-- Booking Section -->
+<section id="booking" class="bg-marble p-10 text-center gothic-frame">
+  <h2 class="text-3xl font-bold gold-text mb-6">Book Your Experience</h2>
+  
+  <form id="booking-form" class="max-w-lg mx-auto space-y-4">
+    <!-- Guest Name -->
+    <div>
+      <label for="guest-name" class="block text-left mb-1">Full Name</label>
+      <input type="text" id="guest-name" name="guest-name" required
+        class="w-full p-2 rounded border gold-border text-black">
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="guest-email" class="block text-left mb-1">Email Address</label>
+      <input type="email" id="guest-email" name="guest-email" required
+        class="w-full p-2 rounded border gold-border text-black">
+    </div>
+
+    <!-- Booking Type -->
+    <div>
+      <label for="booking-type" class="block text-left mb-1">Booking Type</label>
+      <select id="booking-type" name="booking-type" required
+        class="w-full p-2 rounded border gold-border text-black">
+        <option value="">Select an option</option>
+        <option value="dining">Dining Reservation</option>
+        <option value="spa">Spa Treatment</option>
+        <option value="promotion">Special Promotion</option>
+        <option value="offer">Special Offer</option>
+      </select>
+    </div>
+
+    <!-- Dining Options -->
+    <div id="dining-options" class="hidden">
+      <label for="dining-choice" class="block text-left mb-1">Dining Choice</label>
+      <select id="dining-choice" name="dining-choice"
+        class="w-full p-2 rounded border gold-border text-black">
+        <option value="noir">Noir Fine Dining</option>
+        <option value="cafe">Courtyard Café</option>
+        <option value="rooftop">Rooftop Lounge</option>
+        <option value="cellar">Cellar Banquet</option>
+        <option value="tea">Tea Room</option>
+        <option value="garden">Garden Terrace</option>
+      </select>
+    </div>
+
+    <!-- Spa Options -->
+    <div id="spa-options" class="hidden">
+      <label for="spa-choice" class="block text-left mb-1">Spa Treatment</label>
+      <select id="spa-choice" name="spa-choice"
+        class="w-full p-2 rounded border gold-border text-black">
+        <option value="aroma">Aromatherapy Massage</option>
+        <option value="rose">Gothic Rose Facial</option>
+        <option value="velvet">Velvet Body Wrap</option>
+        <option value="crystal">Crystal Healing Therapy</option>
+        <option value="midnight">Midnight Bath Ritual</option>
+        <option value="couples">Couples Retreat</option>
+      </select>
+    </div>
+
+    <!-- Promotions / Offers -->
+    <div id="promo-options" class="hidden">
+      <label for="promo-choice" class="block text-left mb-1">Promotion / Offer</label>
+      <select id="promo-choice" name="promo-choice"
+        class="w-full p-2 rounded border gold-border text-black">
+        <option value="romantic">Romantic Weekend Package</option>
+        <option value="family">Family Getaway Special</option>
+        <option value="wellness">Wellness Retreat Discount</option>
+        <option value="earlybird">Early Bird Booking Offer</option>
+        <option value="loyalty">Loyalty Member Exclusive</option>
+      </select>
+    </div>
+
+    <!-- Date -->
+    <div>
+      <label for="booking-date" class="block text-left mb-1">Preferred Date</label>
+      <input type="date" id="booking-date" name="booking-date" required
+        class="w-full p-2 rounded border gold-border text-black">
+    </div>
+
+    <!-- Special Requests -->
+    <div>
+      <label for="requests" class="block text-left mb-1">Special Requests</label>
+      <textarea id="requests" name="requests" rows="3"
+        class="w-full p-2 rounded border gold-border text-black"></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="gold-button px-6 py-2 rounded font-semibold">
+      Confirm Booking
+    </button>
+  </form>
+</section>
+
+<!-- Pop-Up Modal -->
+<div id="confirmation-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-white text-black rounded-lg p-6 max-w-md shadow-lg">
+    <h3 class="text-2xl font-bold mb-4">Booking Successful ✅</h3>
+    <p id="confirmation-details" class="mb-4"></p>
+    <button onclick="closeModal()" class="gold-button px-4 py-2 rounded">Close</button>
+  </div>
+</div>
+
+<script>
+  // Show/hide options based on booking type
+  document.getElementById("booking-type").addEventListener("change", function() {
+    document.getElementById("dining-options").classList.add("hidden");
+    document.getElementById("spa-options").classList.add("hidden");
+    document.getElementById("promo-options").classList.add("hidden");
+
+    if (this.value === "dining") {
+      document.getElementById("dining-options").classList.remove("hidden");
+    } else if (this.value === "spa") {
+      document.getElementById("spa-options").classList.remove("hidden");
+    } else if (this.value === "promotion" || this.value === "offer") {
+      document.getElementById("promo-options").classList.remove("hidden");
+    }
+  });
+
+  // Handle booking form submission
+  document.getElementById("booking-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("guest-name").value;
+    const type = document.getElementById("booking-type").value;
+    const date = document.getElementById("booking-date").value;
+
+    let detail = "";
+    if (type === "dining") {
+      detail = document.getElementById("dining-choice").value;
+    } else if (type === "spa") {
+      detail = document.getElementById("spa-choice").value;
+    } else {
+      detail = document.getElementById("promo-choice").value;
+    }
+
+    // Fill modal details
+    const details = document.getElementById("confirmation-details");
+    details.textContent = `Thank you, ${name}. Your ${type} booking (${detail}) for ${date} has been submitted successfully.`;
+
+    // Show modal
+    document.getElementById("confirmation-modal").classList.remove("hidden");
+
+    // Reset form
+    e.target.reset();
+  });
+
+  // Close modal
+  function closeModal() {
+    document.getElementById("confirmation-modal").classList.add("hidden");
+  }
+</script>
+
+  <!-- Chat Panel -->
+  <div id="chat-panel" hidden aria-hidden="true" class="chat-panel">
+    <h3 class="text-xl font-bold mb-2">AI Concierge</h3>
+    <div id="chat-messages" class="chat-messages">
+      <div class="hotel-message">Welcome to Castle Noir. How can I assist you?</div>
+    </div>
+    <div class="chat-input-area">
+      <input 
+        id="chat-input" 
+        type="text" 
+        class="chat-input" 
+        placeholder="Type your message..."
+        onkeydown="handleChatInput(event)"
+      >
+      <div class="quick-replies">
+        <button onclick="quickReply('Book a Room')">Book a Room</button>
+        <button onclick="quickReply('Spa Menu')">Spa Menu</button>
+        <button onclick="quickReply('Dining Options')">Dining Options</button>
+        <button onclick="quickReply('Guest Services')">Guest Services</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleChat() {
+      const panel = document.getElementById('chat-panel');
+      const btn = document.getElementById('chatToggleBtn');
+      if (!panel) return;
+
+      const isHidden = panel.hasAttribute('hidden');
+      if (isHidden) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('aria-hidden', 'false');
+        btn && btn.setAttribute('aria-expanded', 'true');
+        const focusable = panel.querySelector('input');
+        (focusable || panel).focus({ preventScroll: true });
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('aria-hidden', 'true');
+        btn && btn.setAttribute('aria-expanded', 'false');
+        btn && btn.focus({ preventScroll: true });
+      }
+    }
+
+    function handleChatInput(event) {
+      if (event.key === "Enter") {
+        const input = document.getElementById("chat-input");
+        const message = input.value.trim();
+        if (!message) return;
+
+        addMessage(message, "user");
+        input.value = "";
+
+        const response = generateResponse(message);
+        setTimeout(() => addMessage(response, "hotel"), 600);
+      }
+    }
+
+    function quickReply(text) {
+      addMessage(text, "user");
+      const response = generateResponse(text);
+      setTimeout(() => addMessage(response, "hotel"), 600);
+    }
+
+    function addMessage(text, sender) {
+      const container = document.getElementById("chat-messages");
+      const msg = document.createElement("div");
+      msg.className = sender === "user" ? "user-message" : "hotel-message";
+      msg.textContent = text;
+      container.appendChild(msg);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function generateResponse(userText) {
+      const lower = userText.toLowerCase();
+      if (lower.includes("book")) {
+        return "I can help you book a room. Which dates are you considering?";
+      }
+      if (lower.includes("spa")) {
+        return "Our spa offers Aromatherapy, Gothic Rose Facial, Velvet Body Wrap, Crystal Healing, Midnight Bath Ritual, and Couples Retreat. Which would you like?";
+      }
+      if (lower.includes("dining")) {
+        return "Dining options include Noir Fine Dining, Courtyard Café, Rooftop Lounge, Cellar Banquet, Tea Room, and Garden Terrace. Shall I reserve a table?";
+      }
+      if (lower.includes("services")) {
+        return "Guest services include concierge, luxury transport, multi‑language support, event reservations, business center, family services, pet amenities, and cultural experiences.";
+      }
+      return "Certainly. Could you tell me more about what you’d like?";
+    }
+  </script>
+
+ <!-- Hotel Information & Promotions -->
+<section id="promotions" class="py-24 bg-marble bg-opacity-90">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gold-text mb-4">Experience Castle Noir</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Discover our rich history and special offerings that make every stay a journey into Transylvanian legend.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- History & Timeline -->
+      <div>
+        <h3 class="text-2xl font-bold gold-text mb-6">Our Legacy</h3>
+        <ul class="relative border-l border-gold space-y-8 pl-8">
+          <li class="timeline-item">
+            <span class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-gold"></span>
+            <h4 class="text-xl gold-text mb-2">Ancient Foundations</h4>
+            <p class="text-gray-300">Built upon 15th century ruins, Castle Noir draws inspiration from Transylvania's most iconic castles while incorporating modern luxury.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-gold"></span>
+            <h4 class="text-xl gold-text mb-2">Architectural Renaissance</h4>
+            <p class="text-gray-300">Renowned architect Elias Blackwood reimagined gothic architecture for the 21st century, creating our signature silhouette in 2018.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-gold"></span>
+            <h4 class="text-xl gold-text mb-2">Award-Winning Design</h4>
+            <p class="text-gray-300">Castle Noir has received international acclaim for its innovative blend of gothic elements with sustainable luxury.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-gold"></span>
+            <h4 class="text-xl gold-text mb-2">A Culinary Journey</h4>
+            <p class="text-gray-300">Our restaurant "The Crimson Chamber" offers contemporary interpretations of traditional Transylvanian cuisine paired with fine wines.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Promotions Carousel -->
+      <div>
+        <h3 class="text-2xl font-bold gold-text mb-6">Special Promotions</h3>
+        <div class="relative overflow-hidden rounded-lg shadow-lg mb-12">
+          <div id="promo-carousel" class="flex transition-transform duration-500">
+            <!-- Slide 1 -->
+            <div class="min-w-full bg-gray-900 p-8 text-center">
+              <h4 class="text-xl gold-text mb-2">Winter at the Castle</h4>
+              <p class="text-gray-300 mb-4">Enjoy cozy suites with complimentary mulled wine and guided ghost tours.</p>
+              <button class="gold-button px-6 py-2 rounded-sm book-offer" data-offer="Winter at the Castle">Book Offer</button>
+            </div>
+            <!-- Slide 2 -->
+            <div class="min-w-full bg-gray-900 p-8 text-center">
+              <h4 class="text-xl gold-text mb-2">Romance Package</h4>
+              <p class="text-gray-300 mb-4">Couples enjoy spa treatments, candlelit dinners, and rose petal turndown service.</p>
+              <button class="gold-button px-6 py-2 rounded-sm book-offer" data-offer="Romance Package">Book Offer</button>
+            </div>
+          </div>
+          <!-- Controls -->
+          <div class="flex justify-center mt-4 space-x-2">
+            <button class="w-3 h-3 rounded-full bg-gold promo-dot" data-index="0"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-500 promo-dot" data-index="1"></button>
+          </div>
+        </div>
+
+        <!-- Special Offers Grid -->
+        <div>
+          <h3 class="text-2xl font-bold gold-text mb-6">Special Offers</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="promo-card bg-gray-900 p-4 rounded-sm">
+              <h4 class="text-xl gold-text mb-2">Full Moon Package</h4>
+              <p class="text-gray-300 text-sm mb-3">Luxury suite, champagne, and midnight castle tour.</p>
+              <button class="gold-button px-4 py-2 rounded-sm book-offer" data-offer="Full Moon Package">Book Offer</button>
+            </div>
+            <div class="promo-card bg-gray-900 p-4 rounded-sm">
+              <h4 class="text-xl gold-text mb-2">Gothic Spa Retreat</h4>
+              <p class="text-gray-300 text-sm mb-3">Black marble spa with treatments and wine service.</p>
+              <button class="gold-button px-4 py-2 rounded-sm book-offer" data-offer="Gothic Spa Retreat">Book Offer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Modal -->
+<div id="offer-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden">
+  <div class="bg-gray-900 p-8 rounded-lg max-w-lg w-full relative text-gray-300">
+    <button id="offer-close" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+    <h3 id="offer-title" class="text-2xl gold-text mb-4">Book Offer</h3>
+    <form id="offer-form" class="space-y-4">
+      <div>
+        <label>Selected Offer</label>
+        <input type="text" id="offer-name" name="offer" readonly
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+      </div>
+      <div>
+        <label>Full Name</label>
+        <input type="text" id="client-name" name="name" required
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" id="client-email" name="email" required
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label>Check-in</label>
+          <input type="date" id="checkin" name="checkin" required
+            class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+        </div>
+        <div>
+          <label>Check-out</label>
+          <input type="date" id="checkout" name="checkout" required
+            class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+        </div>
+      </div>
+      <div>
+        <label>Notes</label>
+        <textarea id="offer-notes" name="notes" rows="3"
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm"></textarea>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" id="offer-save" class="gold-button px-4 py-2 rounded-sm">Save</button>
+        <button type="button" id="offer-update" class="gold-button px-4 py-2 rounded-sm">Update</button>
+        <button type="button" id="offer-delete" class="bg-red-600 px-4 py-2 rounded-sm">Delete</button>
+      </div>
+      <p id="offer-feedback" class="text-green-400 mt-3 hidden">Booking confirmed!</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Carousel dots
+  const carousel = document.getElementById('promo-carousel');
+  const dots = document.querySelectorAll('.promo-dot');
+  function showPromo(index) {
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle('bg-gold',i===index));
+    dots.forEach((d,i)=>d.classList.toggle('bg-gray-500',i!==index));
+  }
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      showPromo(Number(dot.dataset.index));
+    });
+  });
+  showPromo(0);
+  // Offer booking modal
+  const offerModal = document.getElementById('offer-modal');
+  const offerTitle = document.getElementById('offer-title');
+  const offerNameInput = document.getElementById('offer-name');
+  const offerFeedback = document.getElementById('offer-feedback');
+  document.querySelectorAll('.book-offer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const offer = btn.dataset.offer;
+      offerTitle.textContent = `Book Offer: ${offer}`;
+      offerNameInput.value = offer;
+      offerFeedback.classList.add('hidden');
+      offerModal.classList.remove('hidden');
+    });
+  });
+  document.getElementById('offer-close').addEventListener('click', () => {
+    offerModal.classList.add('hidden');
+  });
+  document.getElementById('offer-save').addEventListener('click', () => {
+    offerFeedback.textContent = 'Booking confirmed!';
+    offerFeedback.classList.remove('hidden');
+  });
+  document.getElementById('offer-update').addEventListener('click', () => {
+    offerFeedback.textContent = 'Booking updated!';
+    offerFeedback.classList.remove('hidden');
+  });
+  document.getElementById('offer-delete').addEventListener('click', () => {
+    offerFeedback.textContent = 'Booking deleted!';
+    offerFeedback.classList.remove('hidden');
+  });
+</script>
+
+<!-- Location Map -->
+<section id="location" class="py-24 bg-velvet">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gold-text mb-4">Find Your Way to Castle Noir</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Nestled in the misty foothills with breathtaking views, yet conveniently accessible from major routes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Interactive Map (no API key needed) -->
+      <div class="gothic-frame candle-glow h-[400px]">
+        <iframe
+          src="https://www.google.com/maps?q=Castle+Noir+Brasov+Romania&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
+      <div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold gold-text mb-4">Location & Directions</h3>
+          <p class="text-gray-300 mb-4">
+            Castle Noir is located at the edge of the ancient Carpathian forest, just 30 minutes from Brasov International Airport.
+          </p>
+
+          <div class="flex items-start mb-4">
+            <i class="fas fa-map-pin gold-text mt-1 mr-3"></i>
+            <p class="text-gray-300">1897 Dracula Boulevard<br>Brasov, Transylvania<br>Romania</p>
+          </div>
+
+          <div class="flex items-center mb-4">
+            <i class="fas fa-phone gold-text mr-3"></i>
+            <p class="text-gray-300">+40 (555) 123-4567</p>
+          </div>
+
+          <div class="flex items-center">
+            <i class="fas fa-envelope gold-text mr-3"></i>
+            <p class="text-gray-300">reservations@castlenoir.com</p>
+          </div>
+        </div>
+
+        <!-- Directions -->
+        <div>
+          <h3 class="text-xl gold-text mb-4">Get Directions</h3>
+          <div class="flex flex-col md:flex-row gap-4 mb-6">
+            <input id="start-address" type="text" placeholder="Enter your starting address"
+              class="flex-grow bg-gray-800 border border-gray-700 px-4 py-3 rounded-sm focus:outline-none focus:border-gold">
+            <button id="get-directions" class="gold-button px-6 py-3 rounded-sm whitespace-nowrap">
+              Get Directions
+            </button>
+          </div>
+        </div>
+
+<!-- Transportation Options --> 
+ <div class="bg-gray-900 bg-opacity-60 p-6 rounded-sm"> 
+  <h4 class="text-lg gold-text mb-3">Transportation Options</h4> 
+  <div class="space-y-4">
+     <div class="flex items-start justify-between"> 
+      <div class="flex items-start">
+         <i class="fas fa-taxi gold-text mt-1 mr-3"></i>
+          <div> 
+            <p class="text-white font-semibold">Book a Cab</p> 
+            <p class="text-gray-300 text-sm">Available 24/7, approx. fare from airport: 50€</p> 
+            </div>
+             </div> 
+             <button 
+             class="gold-button px-4 py-2 rounded-sm book-transport" data-type="Cab">Book Cab</button>
+              </div> 
+              <div class="flex items-start justify-between"> 
+                <div class="flex items-start">
+                   <i class="fas fa-helicopter gold-text mt-1 mr-3"></i> 
+                   <div>
+                     <p class="text-white font-semibold">Helicopter Transfer</p>
+                      <p class="text-gray-300 text-sm">Ultimate arrival experience via our helipad.</p>
+                       </div>
+                        </div>
+                         <button class="gold-button px-4 py-2 rounded-sm book-transport" data-type="Helicopter">Book Helicopter</button>
+                          </div>
+                           </div>
+                            </div>
+                             </div>
+                             </div>
+                              </div> 
+                              </section>
+ <!-- Transport Booking Modal -->
+<div id="transport-modal" 
+     class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500">
+  <div class="bg-gray-900 p-8 rounded-lg max-w-lg w-full relative text-gray-300 transform scale-95 transition-transform duration-500">
+    <button id="close-transport" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+    <h3 id="transport-title" class="text-2xl gold-text mb-4">Book Transport</h3>
+    <form id="transport-form" class="space-y-4">
+      <div>
+        <label for="transport-name">Full Name</label>
+        <input type="text" id="transport-name" name="name" required
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+      </div>
+      <div>
+        <label for="transport-phone">Phone</label>
+        <input type="tel" id="transport-phone" name="phone" required
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm">
+      </div>
+      <div>
+        <label for="transport-notes">Notes</label>
+        <textarea id="transport-notes" name="notes" rows="3"
+          class="w-full bg-gray-800 border border-gray-700 px-3 py-2 rounded-sm"></textarea>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" id="transport-save" class="gold-button px-4 py-2 rounded-sm">Save</button>
+        <button type="button" id="transport-update" class="gold-button px-4 py-2 rounded-sm">Update</button>
+        <button type="button" id="transport-delete" class="bg-red-600 px-4 py-2 rounded-sm">Delete</button>
+      </div>
+      <p id="transport-feedback" class="text-green-400 mt-3 hidden">Booking confirmed!</p>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Modal visible state */
+  #transport-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #transport-modal.active > div {
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('transport-modal');
+  const closeBtn = document.getElementById('close-transport');
+  const title = document.getElementById('transport-title');
+  const feedback = document.getElementById('transport-feedback');
+  let currentBooking = null;
+
+  // Open modal with fade-in
+  document.querySelectorAll('.book-transport').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type;
+      title.textContent = `Book ${type} Transfer`;
+      modal.classList.add('active'); // fade-in
+      feedback.classList.add('hidden');
+      currentBooking = { type };
+      document.getElementById('transport-form').reset();
+    });
+  });
+
+  // Close modal with fade-out
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active'); // fade-out
+  });
+
+  // Save booking
+  document.getElementById('transport-save').addEventListener('click', () => {
+    if (!currentBooking) return;
+    currentBooking.id = Date.now().toString(36);
+    feedback.textContent = `Booking confirmed for ${currentBooking.type}. ID: ${currentBooking.id}`;
+    feedback.classList.remove('hidden');
+    alert(`Booking successful! Reservation ID: ${currentBooking.id}`);
+  });
+
+  // Update booking
+  document.getElementById('transport-update').addEventListener('click', () => {
+    if (!currentBooking || !currentBooking.id) { alert('No booking to update.'); return; }
+    feedback.textContent = `Booking updated for ${currentBooking.type}. ID: ${currentBooking.id}`;
+    feedback.classList.remove('hidden');
+    alert(`Booking updated! Reservation ID: ${currentBooking.id}`);
+  });
+
+  // Delete booking
+  document.getElementById('transport-delete').addEventListener('click', () => {
+    if (!currentBooking) { alert('No booking to delete.'); return; }
+    currentBooking = null;
+    document.getElementById('transport-form').reset();
+    feedback.classList.add('hidden');
+    alert('Booking deleted.');
+  });
+</script>
+
+  <!-- Footer -->
+  <footer class="bg-marble bg-opacity-90 pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-xl gold-text font-bold mb-4">Castle Noir</h3>
+          <p class="text-gray-400 mb-6">Where gothic elegance meets modern luxury in the heart of Transylvania.</p>
+          <div class="flex space-x-4">
+            <a href="javascript:void(0)" class="text-gray-400 hover:text-gold"><i class="fab fa-facebook-f"></i></a>
+            <a href="javascript:void(0)" class="text-gray-400 hover:text-gold"><i class="fab fa-instagram"></i></a>
+            <a href="javascript:void(0)" class="text-gray-400 hover:text-gold"><i class="fab fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-gray-400 hover:text-gold"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl gold-text font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="javascript:void(0)" class="text-gray-400 hover:gold-text">About Us</a></li>
+            <li><a href="javascript:void(0)" class="text-gray-400 hover:gold-text">Accommodations</a></li>
+            <li><a href="javascript:void(0)" class="text-gray-400 hover:gold-text">Dining</a></li>
+            <li><a href="javascript:void(0)" class="text-gray-400 hover:gold-text">Spa & Wellness</a></li>
+            <li><a href="javascript:void(0)" class="text-gray-400 hover:gold-text">Events</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl gold-text font-bold mb-4">Contact</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3"></i>
+              <span class="text-gray-400">1897 Dracula Boulevard<br>Brasov, Transylvania</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-gray-400 mr-3"></i>
+              <span class="text-gray-400">+40 (555) 123-4567</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-gray-400 mr-3"></i>
+              <span class="text-gray-400">info@castlenoir.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl gold-text font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Subscribe for special offers and updates</p>
+          <form>
+            <div class="flex">
+              <input type="email" placeholder="Your email" class="flex-grow bg-gray-800 border border-gray-700 px-4 py-2 rounded-sm focus:outline-none focus:border-gold">
+              <button type="button" class="gold-button px-4 py-2 rounded-sm ml-2">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2025 Castle Noir. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Chat Bubble -->
+  <div class="chat-bubble">
+    <button class="bg-gold text-black p-4 rounded-full shadow-lg candle-glow" onclick="toggleChat()">
+      <i class="fas fa-comment-alt text-2xl"></i>
+    </button>
+  </div>
+  
+  <!-- Chat Panel -->
+  <div class="chat-panel bg-marble bg-opacity-95 shadow-2xl rounded-lg overflow-hidden" id="chat-panel">
+    <div class="bg-black bg-opacity-40 p-4 flex justify-between items-center">
+      <h3 class="text-lg gold-text">Guest Services & Concierge</h3>
+      <button class="text-gray-300 hover:text-white" onclick="toggleChat()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="p-4 h-[370px] overflow-y-auto flex flex-col space-y-4" id="chat-messages">
+      <div class="chat-message hotel-message">
+        <p>Welcome to Castle Noir. How may I assist you today?</p>
+      </div>
+    </div>
+    
+    <div class="bg-black bg-opacity-30 p-4">
+      <div class="flex">
+        <input type="text" placeholder="Type your message..." class="flex-grow bg-gray-800 border border-gray-700 px-4 py-2 rounded-sm focus:outline-none focus:border-gold" id="chat-input">
+        <button class="gold-button px-4 py-2 rounded-sm ml-2" id="send-message">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Back to Top Button -->
+  <div class="scroll-top" id="scroll-top">
+    <button class="bg-gold text-black p-3 rounded-full shadow-lg">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+  </div>
+  
+  <!-- Room Templates (Hidden) -->
+  <template id="room-card-template">
+    <div class="room-card bg-gray-900 bg-opacity-70 rounded-sm overflow-hidden gothic-frame">
+      <div class="relative">
+        <img src="" alt="Room" class="w-full h-48 object-cover">
+        <span class="absolute top-2 right-2 bg-black bg-opacity-70 text-gold px-3 py-1 rounded-sm text-sm room-price"></span>
+      </div>
+      <div class="p-5">
+        <h4 class="text-xl gold-text mb-2 room-name"></h4>
+        <p class="text-gray-300 mb-4 room-description"></p>
+        <ul class="text-gray-300 text-sm mb-4 room-features">
+          <!-- Features will be added dynamically -->
+        </ul>
+        <button class="gold-button w-full py-2 rounded-sm reserve-button">Reserve Now</button>
+      </div>
+    </div>
+  </template>
+  
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script id="app-script">
+    // Initialize date pickers
+    flatpickr("#check-in", {
+      minDate: "today",
+      dateFormat: "Y-m-d"
+    });
+    
+    flatpickr("#check-out", {
+      minDate: "today",
+      dateFormat: "Y-m-d"
+    });
+    
+    // Mobile menu toggle
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('translate-x-full');
+    });
+    
+    // Scroll to section
+    function scrollToSection(sectionId) {
+      // First close the mobile menu if it's open
+      if (!mobileMenu.classList.contains('translate-x-full')) {
+        mobileMenu.classList.add('translate-x-full');
+      }
+      
+      const section = document.getElementById(sectionId);
+      const navHeight = 80; // Height of the navigation bar
+      const sectionTop = section.offsetTop - navHeight;
+      
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Virtual Tour carousel
+    const carousel = document.getElementById('tour-carousel');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    const slideshowBtn = document.getElementById('slideshow-button');
+    const audioControls = document.getElementById('audio-controls');
+    const muteBtn = document.getElementById('mute-button');
+    
+    let slideshowActive = false;
+    let slideshowInterval;
+    let currentSlide = 0;
+    const totalSlides = document.querySelectorAll('.carousel-item').length;
+    
+    prevBtn.addEventListener('click', () => {
+      currentSlide = Math.max(currentSlide - 1, 0);
+      updateCarousel();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
+      updateCarousel();
+    });
+    
+    slideshowBtn.addEventListener('click', () => {
+      if (slideshowActive) {
+        stopSlideshow();
+      } else {
+        startSlideshow();
+      }
+    });
+    
+    muteBtn.addEventListener('click', () => {
+      const icon = muteBtn.querySelector('i');
+      if (icon.classList.contains('fa-volume-up')) {
+        icon.classList.remove('fa-volume-up');
+        icon.classList.add('fa-volume-mute');
+      } else {
+        icon.classList.remove('fa-volume-mute');
+        icon.classList.add('fa-volume-up');
+      }
+    });
+    
+    function updateCarousel() {
+      const scrollPosition = currentSlide * carousel.offsetWidth;
+      carousel.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+    
+    function startSlideshow() {
+      slideshowActive = true;
+      slideshowBtn.innerHTML = '<i class="fas fa-pause mr-2"></i> Pause Slideshow';
+      audioControls.style.display = 'flex';
+      
+      slideshowInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 4000);
+    }
+    
+    function stopSlideshow() {
+      slideshowActive = false;
+      slideshowBtn.innerHTML = '<i class="fas fa-play mr-2"></i> Start Slideshow';
+      audioControls.style.display = 'none';
+      clearInterval(slideshowInterval);
+    }
+    
+    // Fullscreen image viewer
+    function openFullscreen(src, caption) {
+      const fullscreenViewer = document.getElementById('fullscreen-viewer');
+      const fullscreenImage = document.getElementById('fullscreen-image');
+      const fullscreenCaption = document.getElementById('fullscreen-caption');
+      
+      fullscreenImage.src = src;
+      fullscreenCaption.textContent = caption;
+      fullscreenViewer.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeFullscreen() {
+      const fullscreenViewer = document.getElementById('fullscreen-viewer');
+      fullscreenViewer.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    // Chat functionality
+    function toggleChat() {
+      const chatPanel = document.getElementById('chat-panel');
+      const chatBubble = document.querySelector('.chat-bubble');
+      
+      if (chatPanel.style.display === 'block') {
+        chatPanel.style.display = 'none';
+        chatBubble.style.display = 'block';
+      } else {
+        chatPanel.style.display = 'block';
+        chatBubble.style.display = 'none';
+      }
+    }
+    
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-message');
+    const chatMessages = document.getElementById('chat-messages');
+    
+    sendButton.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+    
+    function sendMessage() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+      
+      // Add user message
+      const userMessageDiv = document.createElement('div');
+      userMessageDiv.className = 'chat-message user-message';
+      userMessageDiv.innerHTML = `<p>${message}</p>`;
+      chatMessages.appendChild(userMessageDiv);
+      
+      // Clear input
+      chatInput.value = '';
+      
+      // Scroll to bottom
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
+      // Show typing indicator
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'chat-message hotel-message';
+      typingDiv.innerHTML = `<div class="flex space-x-1">
+                              <div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce"></div>
+                              <div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                              <div class="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                            </div>`;
+      chatMessages.appendChild(typingDiv);
+      
+      // Simulate response after delay
+      setTimeout(() => {
+        // Remove typing indicator
+        chatMessages.removeChild(typingDiv);
+        
+        // Add hotel response
+        const hotelMessageDiv = document.createElement('div');
+        hotelMessageDiv.className = 'chat-message hotel-message';
+        hotelMessageDiv.innerHTML = `<p>This is a prototype. In the full version, you would receive a response to your query: "${message}"</p>`;
+        chatMessages.appendChild(hotelMessageDiv);
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 1500);
+    }
+    
+    // Check Availability
+    const checkAvailabilityBtn = document.getElementById('check-availability');
+    const availabilityResults = document.getElementById('availability-results');
+    const roomsLoading = document.getElementById('rooms-loading');
+    const roomsContainer = document.getElementById('rooms-container');
+    
+    checkAvailabilityBtn.addEventListener('click', () => {
+      // Show the results section and loading spinner
+      availabilityResults.style.display = 'block';
+      roomsLoading.style.display = 'block';
+      roomsContainer.style.display = 'none';
+      
+      // Scroll to results
+      availabilityResults.scrollIntoView({ behavior: 'smooth' });
+      
+      // Simulate API call with delay
+      setTimeout(() => {
+        roomsLoading.style.display = 'none';
+        roomsContainer.style.display = 'grid';
+        
+        // Clear existing rooms
+        roomsContainer.innerHTML = '';
+        
+        // Add room results
+        const roomData = [
+          {
+            name: 'Gothic Standard Room',
+            description: 'Elegant room with king-sized bed, black marble bathroom, and gothic-inspired decor.',
+            price: '$299',
+            image: 'https://cdn.pixabay.com/photo/2020/01/15/18/01/room-4768551_1280.jpg',
+            features: ['King Bed', 'Free Wi-Fi', 'Marble Bath', 'City View']
+          },
+          {
+            name: 'Dracula Deluxe Suite',
+            description: 'Spacious suite featuring a canopy bed, sitting area, and premium amenities.',
+            price: '$499',
+            image: 'https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg',
+            features: ['Canopy Bed', 'Sitting Area', 'Premium Bath', 'Castle View']
+          },
+          {
+            name: 'Transylvanian Royal Suite',
+            description: 'Our finest accommodation with separate living room, dining area, and panoramic views.',
+            price: '$899',
+            image: 'https://cdn.pixabay.com/photo/2016/04/18/08/50/kitchen-1336160_1280.jpg',
+            features: ['Master Bedroom', 'Living Room', 'Private Terrace', 'Butler Service']
+          }
+        ];
+        
+        // Get the room card template
+        const roomTemplate = document.getElementById('room-card-template');
+        
+        // Create room cards
+        roomData.forEach(room => {
+          const roomCard = document.importNode(roomTemplate.content, true);
+          
+          // Set room data
+          roomCard.querySelector('img').src = room.image;
+          roomCard.querySelector('.room-price').textContent = room.price + ' per night';
+          roomCard.querySelector('.room-name').textContent = room.name;
+          roomCard.querySelector('.room-description').textContent = room.description;
+          
+          // Add features
+          const featuresList = roomCard.querySelector('.room-features');
+          room.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.className = 'flex items-center mb-1';
+            li.innerHTML = `<i class="fas fa-check gold-text mr-2"></i> ${feature}`;
+            featuresList.appendChild(li);
+          });
+          
+          // Add reserve button event
+          roomCard.querySelector('.reserve-button').addEventListener('click', () => {
+            showReservationConfirmation(room);
+          });
+          
+          // Add to container
+          roomsContainer.appendChild(roomCard);
+        });
+      }, 2000);
+    });
+    
+    function showReservationConfirmation(room) {
+      // Hide availability results
+      availabilityResults.style.display = 'none';
+      
+      // Show confirmation
+      const confirmationDiv = document.getElementById('reservation-confirmation');
+      confirmationDiv.style.display = 'block';
+      
+      // Set confirmation details
+      document.getElementById('confirm-checkin').textContent = document.getElementById('check-in').value;
+      document.getElementById('confirm-checkout').textContent = document.getElementById('check-out').value;
+      document.getElementById('confirm-roomtype').textContent = room.name;
+      document.getElementById('confirm-guests').textContent = '2';
+      document.getElementById('confirm-price').textContent = room.price;
+      document.getElementById('confirm-reservationid').textContent = 'RES-' + Math.floor(100000 + Math.random() * 900000);
+      
+      // Scroll to confirmation
+      confirmationDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Back to top button functionality
+    const scrollTopButton = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        scrollTopButton.classList.add('show');
+      } else {
+        scrollTopButton.classList.remove('show');
+      }
+    });
+    
+    scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Close fullscreen when clicking escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeFullscreen();
+      }
+    });
+    
+    // Initialize with mobile menu closed
+    mobileMenu.classList.add('translate-x-full');
+  </script>
+</body>
+</html>
